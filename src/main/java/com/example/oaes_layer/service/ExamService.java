@@ -16,7 +16,9 @@ public class ExamService implements ExamServiceInterface {
     public boolean editExam(Exam exam){ //called from controller
         return ed.updateExam(exam,exam.getExam_id()); //calls the DAO method
     }
-
+    public List<Exam> viewExamByCode(Exam ex){ //called from controller
+        return ed.viewExam(ex.getExam_code()); //calls the DAO method
+    }
     public List<Exam> getExams(ExamVisitor ev){ //called from controller
         return ev.viewALLExams(); //calls the DAO method
     }
@@ -25,9 +27,6 @@ public class ExamService implements ExamServiceInterface {
     }
     public List<Exam> getExamsDesc(ExamVisitor ev){ //called from controller
         return ev.viewALLExamsOrderByDateDESC(); //calls the DAO method
-    }
-    public List<Exam> viewExamByCode(Exam ex){ //called from controller
-        return ed.viewExam(ex.getExam_code()); //calls the DAO method
     }
     public List<Exam> viewExamByDate(String start,String end,ExamVisitor ev){ //called from controller
         return ev.viewExamByDate(start,end); //calls the DAO method
