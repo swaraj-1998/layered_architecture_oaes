@@ -3,6 +3,8 @@ package com.example.oaes_layer.controller;
 
 import com.example.oaes_layer.bean.Exam;
 import com.example.oaes_layer.bean.Exam;
+import com.example.oaes_layer.dao.ExamVisitor;
+import com.example.oaes_layer.dao.ExamVisitorImpl;
 import com.example.oaes_layer.service.ExamService;
 
 import javax.ws.rs.*;
@@ -49,7 +51,8 @@ public class ExamController {
     @Produces(MediaType.APPLICATION_JSON) //return type
     @Consumes(MediaType.APPLICATION_JSON) //parameter
     public Response viewExamByDate(Exam exam) throws URISyntaxException {
-        List<Exam> exams  = new ExamService().viewExamByDate(exam.getStart_time(),exam.getEnd_time()); //in service
+        ExamVisitor ev = new ExamVisitorImpl();
+        List<Exam> exams  = new ExamService().viewExamByDate(exam.getStart_time(),exam.getEnd_time(),ev); //in service
         return Response.ok().entity(exams).build();
     }
 
@@ -58,7 +61,8 @@ public class ExamController {
     @Produces(MediaType.APPLICATION_JSON) //return type
     @Consumes(MediaType.APPLICATION_JSON) //parameter
     public Response getExams() throws URISyntaxException {
-        List<Exam> exams = new ExamService().getExams(); //in service
+        ExamVisitor ev = new ExamVisitorImpl();
+        List<Exam> exams = new ExamService().getExams(ev); //in service
         return Response.ok().entity(exams).build();
     }
 
@@ -67,7 +71,8 @@ public class ExamController {
     @Produces(MediaType.APPLICATION_JSON) //return type
     @Consumes(MediaType.APPLICATION_JSON) //parameter
     public Response getExamsAsc() throws URISyntaxException {
-        List<Exam> exams = new ExamService().getExamsAsc(); //in service
+        ExamVisitor ev = new ExamVisitorImpl();
+        List<Exam> exams = new ExamService().getExamsAsc(ev); //in service
         return Response.ok().entity(exams).build();
     }
 
@@ -76,7 +81,8 @@ public class ExamController {
     @Produces(MediaType.APPLICATION_JSON) //return type
     @Consumes(MediaType.APPLICATION_JSON) //parameter
     public Response getExamsDesc() throws URISyntaxException {
-        List<Exam> exams = new ExamService().getExamsDesc(); //in service
+        ExamVisitor ev = new ExamVisitorImpl();
+        List<Exam> exams = new ExamService().getExamsDesc(ev); //in service
         return Response.ok().entity(exams).build();
     }
 
