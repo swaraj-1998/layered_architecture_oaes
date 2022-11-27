@@ -288,6 +288,76 @@ function addExamToDatabase() {
 
 
 }
+function registerUser() {
+    // // Getting values
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let obj = {
+        name: name,
+        username: username,
+        password: password,
+        email: email,
+    };
+    // Send to Backend
+    fetch("http://localhost:8082/oaes_layer_war_exploded/api/user/register", {
+        // Adding method type
+        method: "POST",
+        // Adding body or contents to send
+        body: JSON.stringify(obj),
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        // Converting to JSON
+        .then((response) => {
+            if(response.status == 200){
+                alert('Successfully Registered the User !!')
+                location.href = 'login.html';
+                alert("Redirecting to Login Page");
+            }
+            else{
+                alert(response.status);
+            }
+        })
+    alert("Your request is in processing....")
+}
+
+function loginUser() {
+    // // Getting values
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let obj = {
+        username: username,
+        password: password,
+    };
+    // Send to Backend
+    fetch("http://localhost:8082/oaes_layer_war_exploded/api/user/login", {
+        // Adding method type
+        method: "POST",
+        // Adding body or contents to send
+        body: JSON.stringify(obj),
+        // Adding headers to the request
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+        // Converting to JSON
+        .then((response) => {
+            if(response.status == 200){
+                alert('Successfully Logged In !!')
+                location.href = 'homepage.html';
+                alert("Redirecting to Home Page");
+            }
+            else{
+                alert(response.status);
+            }
+        })
+    alert("Your request is in processing....")
+}
+
 function editExamInDatabase() {
     let examid = document.getElementById("examid").value;
     let code = document.getElementById("code").value;

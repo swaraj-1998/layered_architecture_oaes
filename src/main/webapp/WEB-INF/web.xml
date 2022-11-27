@@ -22,6 +22,6 @@
         <!--        <url-pattern>/api/faculty/*</url-pattern>-->
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>homepage.html</welcome-file>
+        <welcome-file>register.html</welcome-file>
     </welcome-file-list>
 </web-app>
