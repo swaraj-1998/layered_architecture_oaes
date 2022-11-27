@@ -235,6 +235,13 @@ function viewExamsByCode(){
     location.href = 'viewExamByCode.html';
     alert("Redirecting to view exam by code");
 }
+function redirectToLogin(){
+    location.href = 'login.html';
+    alert("Redirecting to login page");
+}
+
+
+
 function viewExamsByDate(){
     location.href = 'viewExamByDate.html';
     alert("Redirecting to view exam by Date");
