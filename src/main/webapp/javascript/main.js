@@ -334,18 +334,18 @@ function registerUser() {
 
 function loginUser() {
     // // Getting values
-    let username = document.getElementById("username").value;
+    let email = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-    let obj = {
-        username: username,
-        password: password,
-    };
+    // let obj = {
+    //     email: email,
+    //     password: password,
+    // };
     // Send to Backend
-    fetch("http://localhost:8082/oaes_layer_war_exploded/api/user/login", {
+    fetch("http://localhost:8092/getUser?email="+email+"&password="+password,{
         // Adding method type
-        method: "POST",
+        method: "GET",
         // Adding body or contents to send
-        body: JSON.stringify(obj),
+        // body: JSON.stringify(obj),
         // Adding headers to the request
         headers: {
             "Content-type": "application/json; charset=UTF-8",
